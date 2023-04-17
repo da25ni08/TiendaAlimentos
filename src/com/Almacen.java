@@ -15,13 +15,13 @@ import java.util.HashMap;
  * TODO description
  */
 public class Almacen {
-    private HashMap<String, Integer> contenidoAlmacen = new HashMap<String,Integer>();
-    private ArrayList<Alimento> alimentos = new ArrayList<Alimento>();
+    private static HashMap<String, Integer> contenidoAlmacen = new HashMap<String,Integer>();
+    private static ArrayList<Alimento> alimentos = new ArrayList<Alimento>();
 
     public Almacen() {
     }
     
-    public void insertarAlimento(Alimento alimento, int cantidad) throws IllegalArgumentException {
+    public static void insertarAlimento(Alimento alimento, int cantidad) throws IllegalArgumentException {
         if (contenidoAlmacen.containsKey(alimento.getNombre())) {
             throw new IllegalArgumentException("Articulo existente");
         }
@@ -29,11 +29,11 @@ public class Almacen {
         contenidoAlmacen.put(alimento.getNombre(), cantidad);
     }
     
-    public int getPrecio(String nombre) {
+    public static int getPrecio(String nombre) {
         return contenidoAlmacen.get(nombre);
     }
     
-    public Alimento getAlimento (String nombre) throws IllegalArgumentException{
+    public static Alimento getAlimento (String nombre) throws IllegalArgumentException{
         for(Alimento alimento : alimentos) {
             if (alimento.getNombre().equals(nombre)) {
                 return alimento;
