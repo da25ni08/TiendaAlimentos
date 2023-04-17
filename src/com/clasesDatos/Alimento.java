@@ -3,22 +3,21 @@
  *  @see Github: da25ni08
  *  @see danidp25.08@gmail.com
  */
-
 package com.clasesDatos;
 
 import java.time.LocalDate;
 
 /**
- * @author Daniel Delgado Pérez 
- * TODO description
+ * @author Daniel Delgado Pérez TODO description
  */
 public class Alimento {
+
     private String nombre, marca;
     private TipoAlimento tipo;
     private float precioUnidad;
     private LocalDate fechaCaducidad;
     private int descuento;
-    
+
     public enum TipoAlimento {
         BEBIDA, CONJELADO, EMBUTIDO, BOLLERIA, CONSERV, OTROS
     }
@@ -40,11 +39,6 @@ public class Alimento {
         this.fechaCaducidad = fechaCaducidad;
         this.descuento = descuento;
     }
-    
-    
-
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -85,10 +79,9 @@ public class Alimento {
     public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
-    
-    public float getPrecioDescontado () {
+
+    public float getPrecioDescontado() {
         return (this.precioUnidad * descuento) / 100;
     }
-    
-    
+
 }
