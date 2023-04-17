@@ -18,11 +18,12 @@ public class Tienda {
                 + "1- Insertar alimento"
                 + "2- Añadir a la cesta"
                 + "3- Pagar cesta"
-                + "4- Ver envios"
-                + "5- Buscar alimentos por nombre"
-                + "6- Buscar alimentos por tipo"
-                + "7- Ver mi cesta"
-                + "8- Info del alimento por nombre");
+                + "4- Hacer envio"
+                + "5- Ver envios"
+                + "6- Buscar alimentos por nombre"
+                + "7- Buscar alimentos por tipo"
+                + "8- Ver mi cesta"
+                + "9- Info del alimento por nombre");
     }
 
 }
