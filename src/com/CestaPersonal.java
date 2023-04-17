@@ -67,4 +67,12 @@ public class CestaPersonal {
         }
         return false;
     }
+    
+    public float precioTotal() {
+        float total = 0;
+        for(Articulos articulo : cesta) {
+            total += articulo.getAlimento().getPrecioDescontado() * articulo.getCantidad();
+        }
+        return total;
+    }
 }
