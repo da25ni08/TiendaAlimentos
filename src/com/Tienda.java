@@ -13,9 +13,6 @@ package com;
 public class Tienda {
 
     public static void main(String[] args) {
-        Almacen almacen = new Almacen();
-        CestaPersonal cesta;
-        cesta.
         
         System.out.println("Bienvenido, seleccione la opcion que desea realizar:\n"
                 + "1- Insertar alimento"
