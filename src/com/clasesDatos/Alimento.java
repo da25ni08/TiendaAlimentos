@@ -19,7 +19,7 @@ public class Alimento {
     private int descuento;
 
     public enum TipoAlimento {
-        BEBIDA, CONJELADO, EMBUTIDO, BOLLERIA, CONSERV, OTROS
+        BEBIDA, CONGELADO, EMBUTIDO, BOLLERIA, CONSERV, OTROS
     }
 
     public Alimento(String nombre, String marca, TipoAlimento tipo, float precioUnidad, LocalDate fechaCaducidad) {
