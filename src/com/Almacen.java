@@ -9,6 +9,7 @@ package com;
 import com.clasesDatos.Alimento;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Daniel Delgado Pérez 
@@ -34,11 +35,13 @@ public class Almacen {
     }
     
     public static Alimento getAlimento (String nombre) throws IllegalArgumentException{
-        for(Alimento alimento : alimentos) {
-            if (alimento.getNombre().equals(nombre)) {
-                return alimento;
+        Iterator<Alimento> it = alimentos.iterator();
+        while (it.hasNext()) {
+            Alimento alimentoUsado = it.next();
+            if (alimentoUsado.getNombre().equals(nombre)) {
+                return alimentoUsado;
             }
-        } 
+        }
         throw new IllegalArgumentException("Alimento no en stock");
     }
     
