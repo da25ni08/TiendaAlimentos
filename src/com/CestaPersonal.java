@@ -6,18 +6,21 @@
 package com;
 
 import com.clasesDatos.Alimento;
-import com.clasesDatos.Articulos;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * @author Daniel Delgado Pérez TODO description
  */
 public class CestaPersonal {
 
-    private ArrayList<Articulos> cesta;
+    private LinkedList<Alimento> articulosCesta;
+    private HashMap<String, Integer> cantidadesCesta;
 
     public CestaPersonal() {
-        cesta = new ArrayList();
+        articulosCesta = new LinkedList();
+        cantidadesCesta = new HashMap<>();
     }
     
     /**
@@ -27,51 +30,37 @@ public class CestaPersonal {
      * @throws IllegalArgumentException 
      */
 
-    public Articulos getArticulos(String nombre) throws IllegalArgumentException {
-        for (Articulos articulo : cesta) {
-            if (nombre.equals(articulo.getAlimento().getNombre())) {
-                return articulo;
+    public Alimento getArticulos(String nombre) throws IllegalArgumentException {
+        Iterator<Alimento> it = articulosCesta.iterator();
+        while(it.hasNext()) {
+            Alimento alimentoUsado = it.next();
+            if(alimentoUsado.getNombre().equals(nombre)) {
+                return alimentoUsado;
             }
         }
         throw new IllegalArgumentException("No se encuentra en la cesta");
     }
     
 
-    public void insertarArticulo(Articulos articulo) {
-        if (cesta.contains(articulo)) {
-            cesta.add(articulo);
+    public void insertarArticulo(Alimento alimento, int cantidad) {
+        if (articulosCesta.contains(alimento)) {
+            articulosCesta.addLast(alimento);
+            cantidadesCesta.put(alimento.getNombre(), cantidad);
         }
         throw new IllegalArgumentException("Articulo ya existente en el carrito");
     }
-
-    /**
-     * Modifica la cantidad del articulo y en caso de quedar cantidad 0 elimina el objeto de la cesta
-     * @param alimento Alimento a eliminar
-     * @param cantidad cantidad a modificar, siendo negativo si se va a eliminar
-     * @return Devuelve un booleano dependiendo si el alimento se ha eliminado
-     * de la cesta o solo se ha reducido su cantidad, siendo true que se ha
-     * eliminado
-     * @throws IllegalArgumentException
-     */
-    public boolean modificarArticulo(Alimento alimento, int cantidad) throws IllegalArgumentException {
-
-        try {
-            int posicionArticulo = cesta.indexOf(getArticulos(alimento.getNombre()));
-            cesta.get(posicionArticulo).cambiarCantidad(cantidad);
-            if (cesta.get(posicionArticulo).getCantidad() <= 0) {
-                cesta.remove(posicionArticulo);
-                return true;
-            }
-        } catch (IllegalArgumentException ex) {
-            throw ex;
+    
+    public void modificarCantidad(String nombre, int nuevaCantidad) throws IllegalArgumentException {
+        if(cantidadesCesta.replace(nombre, nuevaCantidad) == null) {
+            throw new IllegalArgumentException("Alimento no existente");
         }
-        return false;
     }
     
     public float precioTotal() {
         float total = 0;
-        for(Articulos articulo : cesta) {
-            total += articulo.getAlimento().getPrecioDescontado() * articulo.getCantidad();
+        Iterator<Alimento> it = articulosCesta.iterator();
+        while(it.hasNext()) {
+            
         }
         return total;
     }
